@@ -37,3 +37,8 @@ variable "istio_ingress_extra_configs" {
   type        = any
   default     = {}
 }
+variable "istiod_helm_config" {
+  description = "Override attributes of helm_release terraform resource"
+  type        = any
+  default     = {}
+}
