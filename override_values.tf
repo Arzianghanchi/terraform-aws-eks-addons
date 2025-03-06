@@ -258,6 +258,18 @@ service:
   EOT
   filename = "${path.module}/override_values/istio_ingress.yaml"
 }
+resource "local_file" "istiod_helm_config" {
+  count    = var.istio_ingress && (var.istiod_helm_config == null) ? 1 : 0
+  content  = <<EOT
+global:
+  defaultNodeSelector:
+    "eks.amazonaws.com/nodegroup" : "critical"
+
+service:
+  type: NodePort
+  EOT
+  filename = "${path.module}/override_values/istiod.yaml"
+}
 #---------------------------- KAILI DASHBOARD ----------------------------
 resource "local_file" "kiali_server_helm_config" {
   count    = var.kiali_server && (var.kiali_server_helm_config == null) ? 1 : 0
