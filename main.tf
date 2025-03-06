@@ -81,6 +81,7 @@ module "istio_ingress" {
   depends_on                  = [module.aws_load_balancer_controller]
   source                      = "./addons/istio-ingress"
   helm_config                 = var.istio_ingress_helm_config != null ? var.istio_ingress_helm_config : { values = [local_file.istio_ingress_helm_config[count.index].content] }
+  istiod_helm_config          = var.istiod_helm_config != null ? var.istiod_helm_config : { values = [local_file.istio_ingress_helm_config[count.index].content] }
   manage_via_gitops           = var.manage_via_gitops
   addon_context               = local.addon_context
   istio_manifests             = var.istio_manifests
