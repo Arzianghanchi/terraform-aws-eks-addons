@@ -169,7 +169,13 @@ variable "istio_ingress" {
 }
 
 variable "istio_ingress_helm_config" {
-  description = "Path to override-values.yaml for Istio Ingress  Helm Chart"
+  description = "Path to override-values.yaml for Istio Ingress Helm Chart"
+  type        = any
+  default     = null
+}
+
+variable "istiod_helm_config" {
+  description = "Path to override-values.yaml for Istiod Helm Chart"
   type        = any
   default     = null
 }
