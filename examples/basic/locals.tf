@@ -1,12 +1,12 @@
-
 locals {
 
   name        = "helm-addons"
   environment = "test"
   region      = "us-east-1"
 
-  vpc_cidr = "10.0.0.0/16"
-  azs      = slice(data.aws_availability_zones.available.names, 0, 3)
+  vpc_cidr    = "10.0.0.0/16"
+  azs         = slice(data.aws_availability_zones.available.names, 0, 3)
+  label_order = ["name", "environment"]
 
   tags = {
     Name        = local.name
@@ -14,5 +14,5 @@ locals {
     GithubRepo  = "terraform-helm-eks-addons"
     GithubOrg   = "clouddrove"
   }
-  cluster_version = "1.26"
+  cluster_version = "1.32"
 }
